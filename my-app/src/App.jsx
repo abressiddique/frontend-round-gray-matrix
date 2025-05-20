@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './App.css'; // Import external styles
+import './App.css'; // This now contains our improved styling
 
 function App() {
   const API_URL = 'https://jsonplaceholder.typicode.com/users';
