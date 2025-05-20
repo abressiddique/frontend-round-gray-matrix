@@ -25,3 +25,8 @@ A simple React application that displays user data with search and pagination fu
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/user-directory.git
+
+
+## FAQ
+
+**Q: What's an efficient way to solve the "longest substring without repeating characters" problem that could be applied to username validation in this app?**
