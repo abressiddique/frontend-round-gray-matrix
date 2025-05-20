@@ -1,32 +1,27 @@
-# 📇 User Directory Search App
 
-This React application fetches user data from a public API and allows you to search users by **name**, **email**, or **phone number**. The results are displayed in a clean table format with live filtering as you type.
+
+# User Directory Application
+
+A simple React application that displays user data with search and pagination functionality.
 
 ![image](https://github.com/user-attachments/assets/d5645706-4400-4437-b1f7-e14e15afbe31)
 
+## Features
 
----
+- Fetches user data from JSONPlaceholder API
+- Search users by name, email, or phone number
+- Pagination to navigate through search results
+- Clean, responsive interface
+- Error handling for empty results
 
-## 🚀 Features
+## Technologies Used
 
-- ✅ Fetches user data from `jsonplaceholder.typicode.com/users`
-- 🔍 Real-time search by name, email, or phone
-- 📋 Displays results in a table
-- 🛑 Shows "No data found" when no match exists
+- React (with Hooks)
+- Axios for API requests
+- CSS for styling
 
----
+## Installation
 
-## 🛠️ Tech Stack
-
-- **React**
-- **Axios** (for API calls)
-- **CSS** (basic table styling)
-
----
-
-## 📦 Installation
-
-1. Clone this repo:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/user-directory-app.git
-   cd user-directory-app
+   git clone https://github.com/your-username/user-directory.git
