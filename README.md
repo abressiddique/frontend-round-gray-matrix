@@ -30,3 +30,7 @@ A simple React application that displays user data with search and pagination fu
 ## FAQ
 
 **Q: What's an efficient way to solve the "longest substring without repeating characters" problem that could be applied to username validation in this app?**
+
+solution in python ..
+![image](https://github.com/user-attachments/assets/4dfc4917-e68b-420c-a536-f6571d6f7c6c)
+
