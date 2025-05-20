@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
-import axios from "axios";
-import './App.css';
+import axios from 'axios';
+import './App.css'; // Import external styles
 
 function App() {
-  const API_URL = "https://jsonplaceholder.typicode.com/users";
-  const [users, setusers] = useState([]);
-  const [query, setquery] = useState("");
+  const API_URL = 'https://jsonplaceholder.typicode.com/users';
+  const [users, setUsers] = useState([]);
+  const [query, setQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    axios.get(API_URL).then((result) => setusers(result.data));
+    axios.get(API_URL).then((result) => setUsers(result.data));
   }, []);
 
-  const filterData = users.filter((user) => {
+  const filteredUsers = users.filter((user) => {
     const lowerQuery = query.toLowerCase();
     return (
       user.name.toLowerCase().includes(lowerQuery) ||
@@ -20,37 +21,67 @@ function App() {
     );
   });
 
+  const totalPages = filteredUsers.length;
+  const userToShow = filteredUsers[currentPage] || null;
+
+  const goToPrevious = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 0));
+  };
+
+  const goToNext = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1));
+  };
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [query]);
+
   return (
-    <div>
+    <div className="container">
+      <h2 className="heading">User Directory</h2>
+
       <input
+        className="search-input"
         value={query}
-        onChange={(e) => setquery(e.target.value)}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name, email, or phone"
       />
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filterData.length !== 0 ? (
-            filterData.map((user) => (
-              <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.phone}</td>
-              </tr>
-            ))
-          ) : (
+
+      {userToShow ? (
+        <table className="user-table">
+          <thead>
             <tr>
-              <td colSpan="3">No data found</td>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{userToShow.name}</td>
+              <td>{userToShow.email}</td>
+              <td>{userToShow.phone}</td>
+            </tr>
+          </tbody>
+        </table>
+      ) : (
+        <p className="no-data">No data found</p>
+      )}
+
+      <div className="pagination">
+        <button onClick={goToPrevious} disabled={currentPage === 0}>
+          Previous
+        </button>
+        <span>
+          {totalPages > 0 ? currentPage + 1 : 0} / {totalPages}
+        </span>
+        <button
+          onClick={goToNext}
+          disabled={currentPage >= totalPages - 1}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
