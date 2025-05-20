@@ -2,7 +2,8 @@
 
 This React application fetches user data from a public API and allows you to search users by **name**, **email**, or **phone number**. The results are displayed in a clean table format with live filtering as you type.
 
-![image](https://github.com/user-attachments/assets/006a61f6-033a-46c5-875b-3d0c8e4ca336)
+![image](https://github.com/user-attachments/assets/d5645706-4400-4437-b1f7-e14e15afbe31)
+
 
 ---
 
